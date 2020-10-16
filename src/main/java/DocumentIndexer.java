@@ -41,8 +41,8 @@ public class DocumentIndexer {
             while (!documentNumbers.isEmpty()) {
                 if (line == null) {
                     break;
-                } else if (line.matches(".I \\d") && line.contains(documentNumbers.get(0).toString())) {
-                    addDocument(reader);
+                } else if (line.matches(".I \\d+") && line.contains(documentNumbers.get(0).toString())) {
+                    line = addDocument(reader);
                     continue;
                 }
                 line = reader.readLine();
@@ -53,7 +53,7 @@ public class DocumentIndexer {
         }
     }
 
-    private void addDocument(BufferedReader reader) {
+    private String addDocument(BufferedReader reader) {
         var doc = new Document();
         var field = new IntPoint("docId", (Integer) documentNumbers.get(0));
         doc.add(field);
@@ -62,11 +62,13 @@ public class DocumentIndexer {
             do {
                 line = reader.readLine();
                 doc.add(new TextField("contents", line, Field.Store.YES));
-            } while (!line.matches(".I \\d"));
+            } while (!line.matches(".I \\d+"));
             writer.addDocument(doc);
             documentNumbers.remove(0);
+            return line;
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
     }
 
