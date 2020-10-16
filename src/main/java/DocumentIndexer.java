@@ -22,7 +22,7 @@ public class DocumentIndexer {
         IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
         iwc.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
         Directory dir = FSDirectory.open(Paths.get("index"));
-        writer = new IndexWriter(dir,iwc);
+        writer = new IndexWriter(dir, iwc);
     }
 
     private ArrayList documentNumbers = new ArrayList<Integer>();
@@ -37,14 +37,15 @@ public class DocumentIndexer {
         Path path = Paths.get("lucene_ dataset.txt");
 
         try (BufferedReader reader = Files.newBufferedReader(path)) {
-            String line;
+            String line = reader.readLine();
             while (!documentNumbers.isEmpty()) {
-                line =reader.readLine();
                 if (line == null) {
                     break;
-                } else if (line.matches(".I \\d") && line.contains(documentNumbers.get(0).toString())){
+                } else if (line.matches(".I \\d") && line.contains(documentNumbers.get(0).toString())) {
                     addDocument(reader);
+                    continue;
                 }
+                line = reader.readLine();
             }
             writer.close();
         } catch (IOException e) {
@@ -60,7 +61,7 @@ public class DocumentIndexer {
             String line = reader.readLine();
             do {
                 line = reader.readLine();
-                doc.add(new TextField("contents",line,Field.Store.YES));
+                doc.add(new TextField("contents", line, Field.Store.YES));
             } while (!line.matches(".I \\d"));
             writer.addDocument(doc);
             documentNumbers.remove(0);
