@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    testImplementation(platform('org.junit:junit-bom:5.7.0'))
+    testImplementation('org.junit.jupiter:junit-jupiter')
+    compile group: 'org.apache.lucene', name: 'lucene-core', version: '8.6.3'
+    compile group: 'org.apache.lucene', name: 'lucene-analyzers-common', version: '8.6.3'
+    compile group: 'org.apache.lucene', name: 'lucene-queryparser', version: '8.6.3'
+}
