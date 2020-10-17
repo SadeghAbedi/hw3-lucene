@@ -8,14 +8,13 @@ import java.util.Collections;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.*;
-import org.apache.lucene.index.IndexWriter;
-import org.apache.lucene.index.IndexWriterConfig;
-import org.apache.lucene.index.IndexableFieldType;
+import org.apache.lucene.index.*;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
 public class DocumentIndexer {
     IndexWriter writer;
+    IndexReader reader;
 
     public DocumentIndexer() throws IOException {
         Analyzer analyzer = new StandardAnalyzer();
@@ -63,7 +62,8 @@ public class DocumentIndexer {
             String line = reader.readLine();
             do {
                 line = reader.readLine();
-                doc.add(new TextField("contents", line, Field.Store.YES));
+                TextField field1 = new TextField("contents", line, Field.Store.YES);
+                doc.add(field1);
             } while (!line.matches(".I \\d+"));
             writer.addDocument(doc);
             documentNumbers.remove(0);
@@ -74,4 +74,14 @@ public class DocumentIndexer {
         }
     }
 
+    public void read() {
+        try {
+            var dir = FSDirectory.open(Paths.get("index"));
+            reader = DirectoryReader.open(dir);
+            reader.getTermVectors(23);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-17T07:53:48" hostname="sadegh-GL553VD" time="30.853">
+<testsuite name="MainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-17T08:07:16" hostname="sadegh-GL553VD" time="2204.716">
   <properties/>
-  <testcase name="main()" classname="MainTest" time="30.853"/>
+  <testcase name="main()" classname="MainTest" time="2204.716"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

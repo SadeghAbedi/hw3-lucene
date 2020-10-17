@@ -17,5 +17,6 @@ public class Main {
             return IntStream.range(Integer.parseInt(range[0]),Integer.parseInt(range[1]));
         }).flatMap(IntStream::boxed).forEach(indexer::addDocumentNumber);
         indexer.perform();
+        indexer.read();
     }
 }
