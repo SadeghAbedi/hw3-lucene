@@ -5,7 +5,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
+import org.apache.lucene.analysis.en.EnglishAnalyzer;
 import org.apache.lucene.document.*;
 import org.apache.lucene.index.*;
 import org.apache.lucene.store.Directory;
@@ -17,10 +17,10 @@ public class DocumentIndexer {
     DirectoryReader reader;
 
     public DocumentIndexer() {
-        Analyzer analyzer = new StandardAnalyzer();
+        Analyzer analyzer = new EnglishAnalyzer();
         IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
         iwc.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
-        Directory dir = null;
+        Directory dir;
         try {
             dir = FSDirectory.open(Paths.get("index"));
             writer = new IndexWriter(dir, iwc);
@@ -29,7 +29,7 @@ public class DocumentIndexer {
         }
     }
 
-    private ArrayList documentNumbers = new ArrayList<Integer>();
+    private final List<Integer> documentNumbers = new ArrayList<>();
 
     void addDocumentNumber(int index) {
         documentNumbers.add(index);
@@ -68,14 +68,14 @@ public class DocumentIndexer {
 
         Terms terms = MultiTerms.getTerms(reader, "contents");
         var it = terms.iterator();
-        BytesRef byteRef = null;
+        BytesRef byteRef;
         while ((byteRef = it.next()) != null) {
             System.out.println("\"" + byteRef.utf8ToString() + "\"" + " : TotalFreq : " + it.totalTermFreq());
 
             for (int i = 0; i < reader.numDocs(); i++) {
                 Terms termVector = reader.getTermVector(i, "contents");
                 TermsEnum itr = termVector.iterator();
-                BytesRef term = null;
+                BytesRef term;
                 while ((term = itr.next()) != null) {
                     try {
                         String termText = term.utf8ToString();
@@ -85,7 +85,7 @@ public class DocumentIndexer {
 
 
                     } catch (Exception e) {
-                        System.out.println(e);
+                        e.printStackTrace();
                     }
                 }
             }
