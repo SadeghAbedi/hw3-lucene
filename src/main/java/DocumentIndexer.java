@@ -59,6 +59,28 @@ public class DocumentIndexer {
         }
     }
 
+    private String addDocument(BufferedReader reader) {
+        var doc = new Document();
+        var type = new FieldType();
+        type.setIndexOptions(IndexOptions.DOCS_AND_FREQS);
+        type.setStoreTermVectors(true);
+
+        try {
+            String line = reader.readLine();
+            do {
+                line = reader.readLine();
+                doc.add(new Field("contents", line, type));
+            } while (!line.matches(".I \\d+"));
+            writer.addDocument(doc);
+            documentNumbers.remove(0);
+            return line;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
     public void readIndex() throws IOException {
         Directory dir = FSDirectory.open(Paths.get("index"));
         reader = DirectoryReader.open(dir);
@@ -81,9 +103,8 @@ public class DocumentIndexer {
                         String termText = term.utf8ToString();
                         if (termText.equals(byteRef.utf8ToString())) {
                             System.out.print("doc" + i + "(" + itr.totalTermFreq() + "),");
+                            break;
                         }
-
-
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -97,26 +118,5 @@ public class DocumentIndexer {
         reader.close();
     }
 
-    private String addDocument(BufferedReader reader) {
-        var doc = new Document();
-        var type = new FieldType();
-        type.setIndexOptions(IndexOptions.DOCS_AND_FREQS);
-        type.setStored(true);
-        type.setStoreTermVectors(true);
-
-        try {
-            String line = reader.readLine();
-            do {
-                line = reader.readLine();
-                doc.add(new Field("contents", line, type));
-            } while (!line.matches(".I \\d+"));
-            writer.addDocument(doc);
-            documentNumbers.remove(0);
-            return line;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 
 }

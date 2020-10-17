@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-17T14:23:43" hostname="sadegh-GL553VD" time="8.984">
+<testsuite name="MainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-17T20:34:43" hostname="friend" time="11.261">
   <properties/>
-  <testcase name="main()" classname="MainTest" time="8.984"/>
-  <system-out><![CDATA[[_t.cfe, _t.cfs, _t.si, segments_p, write.lock]
+  <testcase name="main()" classname="MainTest" time="11.261"/>
+  <system-out><![CDATA[[_1f.cfe, _1f.cfs, _1f.si, segments_1l, write.lock]
 103
 "0.003" : TotalFreq : 1
 doc1(1),
