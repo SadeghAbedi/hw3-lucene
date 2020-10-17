@@ -5,6 +5,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.en.EnglishAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.*;
 import org.apache.lucene.index.*;
@@ -16,7 +17,7 @@ public class DocumentIndexer {
     IndexWriter writer;
 
     public DocumentIndexer() throws IOException {
-        Analyzer analyzer = new StandardAnalyzer();
+        Analyzer analyzer = new EnglishAnalyzer();
         IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
         iwc.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
         Directory dir = FSDirectory.open(Paths.get("index"));
