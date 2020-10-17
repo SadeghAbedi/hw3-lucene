@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="10dc57bd-b0ba-4e32-a720-17b8f711625c" name="Default Changelist" comment="trying to create index" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1iz1E4rLhhdGqu8TC1TZ1z92he9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="show.unlinked.gradle.project.popup" value="false" />
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="hw2-lucene.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="gradlew" type="ShConfigurationType" temporary="true">
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/gradlew" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Shell Script.gradlew" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10dc57bd-b0ba-4e32-a720-17b8f711625c" name="Default Changelist" comment="" />
+      <created>1602895491706</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602895491706</updated>
+    </task>
+    <task id="LOCAL-00001" summary="trying to create index">
+      <created>1602927239057</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1602927239057</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="trying to create index" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to create index" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="424" y="236" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602895819563">
+      <screen x="0" y="0" width="1920" height="1155" />
+    </state>
+    <state x="424" y="236" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1155@0.0.1920.1155" timestamp="1602895819563" />
+    <state x="708" y="381" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602926125280">
+      <screen x="0" y="0" width="1920" height="1155" />
+    </state>
+    <state x="708" y="381" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1155@0.0.1920.1155" timestamp="1602926125280" />
+    <state width="1874" height="312" key="GridCell.Tab.0.bottom" timestamp="1602927020798">
+      <screen x="0" y="0" width="1920" height="1155" />
+    </state>
+    <state width="1874" height="312" key="GridCell.Tab.0.bottom/0.0.1920.1155@0.0.1920.1155" timestamp="1602927020798" />
+    <state width="1874" height="312" key="GridCell.Tab.0.center" timestamp="1602927020796">
+      <screen x="0" y="0" width="1920" height="1155" />
+    </state>
+    <state width="1874" height="312" key="GridCell.Tab.0.center/0.0.1920.1155@0.0.1920.1155" timestamp="1602927020796" />
+    <state width="1874" height="312" key="GridCell.Tab.0.left" timestamp="1602927020795">
+      <screen x="0" y="0" width="1920" height="1155" />
+    </state>
+    <state width="1874" height="312" key="GridCell.Tab.0.left/0.0.1920.1155@0.0.1920.1155" timestamp="1602927020795" />
+    <state width="1874" height="312" key="GridCell.Tab.0.right" timestamp="1602927020797">
+      <screen x="0" y="0" width="1920" height="1155" />
+    </state>
+    <state width="1874" height="312" key="GridCell.Tab.0.right/0.0.1920.1155@0.0.1920.1155" timestamp="1602927020797" />
+    <state x="653" y="226" key="SettingsEditor" timestamp="1602926356216">
+      <screen x="0" y="0" width="1920" height="1155" />
+    </state>
+    <state x="653" y="226" key="SettingsEditor/0.0.1920.1155@0.0.1920.1155" timestamp="1602926356216" />
+    <state x="560" y="300" key="Vcs.Push.Dialog.v2" timestamp="1602927243366">
+      <screen x="0" y="0" width="1920" height="1155" />
+    </state>
+    <state x="560" y="300" key="Vcs.Push.Dialog.v2/0.0.1920.1155@0.0.1920.1155" timestamp="1602927243366" />
+    <state x="776" y="493" width="358" height="167" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602926662130">
+      <screen x="0" y="0" width="1920" height="1155" />
+    </state>
+    <state x="776" y="493" width="358" height="167" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1155@0.0.1920.1155" timestamp="1602926662130" />
+    <state x="665" y="193" width="589" height="768" key="find.popup" timestamp="1602924680988">
+      <screen x="0" y="0" width="1920" height="1155" />
+    </state>
+    <state x="665" y="193" width="589" height="768" key="find.popup/0.0.1920.1155@0.0.1920.1155" timestamp="1602924680988" />
+  </component>
+</project>
