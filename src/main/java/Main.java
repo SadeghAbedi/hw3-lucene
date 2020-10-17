@@ -24,7 +24,7 @@ public class Main {
         Arrays.stream(args).filter(s -> s.matches("\\d+-\\d+"))
                 .map(s -> {
                     var range = s.split("-");
-                    return IntStream.range(Integer.parseInt(range[0]),Integer.parseInt(range[1]));
+                    return IntStream.range(Integer.parseInt(range[0]), Integer.parseInt(range[1]));
                 }).flatMap(IntStream::boxed).forEach(indexer::addDocumentNumber);
         indexer.perform();
 
@@ -35,3 +35,4 @@ public class Main {
             e.printStackTrace();
         }
     }
+}
