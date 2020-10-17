@@ -56,7 +56,7 @@ public class DocumentIndexer {
 
     private String addDocument(BufferedReader reader) {
         var doc = new Document();
-        var field = new IntPoint("docId", (Integer) documentNumbers.get(0));
+        var field = new IntPoint("docID", (Integer) documentNumbers.get(0));
         doc.add(field);
         try {
             String line = reader.readLine();
@@ -78,7 +78,7 @@ public class DocumentIndexer {
         try {
             var dir = FSDirectory.open(Paths.get("index"));
             reader = DirectoryReader.open(dir);
-            reader.getTermVectors(23);
+            reader.getTermVectors(2);
         } catch (IOException e) {
             e.printStackTrace();
         }
