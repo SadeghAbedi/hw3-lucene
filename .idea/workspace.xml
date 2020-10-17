@@ -22,7 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10dc57bd-b0ba-4e32-a720-17b8f711625c" name="Default Changelist" comment="trying to create index" />
+    <list default="true" id="10dc57bd-b0ba-4e32-a720-17b8f711625c" name="Default Changelist" comment="trying to create index">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -133,22 +137,22 @@
       <screen x="0" y="0" width="1920" height="1155" />
     </state>
     <state x="708" y="381" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1155@0.0.1920.1155" timestamp="1602926125280" />
-    <state width="1874" height="312" key="GridCell.Tab.0.bottom" timestamp="1602927020798">
+    <state width="1874" height="311" key="GridCell.Tab.0.bottom" timestamp="1602939552766">
       <screen x="0" y="0" width="1920" height="1155" />
     </state>
-    <state width="1874" height="312" key="GridCell.Tab.0.bottom/0.0.1920.1155@0.0.1920.1155" timestamp="1602927020798" />
-    <state width="1874" height="312" key="GridCell.Tab.0.center" timestamp="1602927020796">
+    <state width="1874" height="311" key="GridCell.Tab.0.bottom/0.0.1920.1155@0.0.1920.1155" timestamp="1602939552766" />
+    <state width="1874" height="311" key="GridCell.Tab.0.center" timestamp="1602939552764">
       <screen x="0" y="0" width="1920" height="1155" />
     </state>
-    <state width="1874" height="312" key="GridCell.Tab.0.center/0.0.1920.1155@0.0.1920.1155" timestamp="1602927020796" />
-    <state width="1874" height="312" key="GridCell.Tab.0.left" timestamp="1602927020795">
+    <state width="1874" height="311" key="GridCell.Tab.0.center/0.0.1920.1155@0.0.1920.1155" timestamp="1602939552764" />
+    <state width="1874" height="311" key="GridCell.Tab.0.left" timestamp="1602939552763">
       <screen x="0" y="0" width="1920" height="1155" />
     </state>
-    <state width="1874" height="312" key="GridCell.Tab.0.left/0.0.1920.1155@0.0.1920.1155" timestamp="1602927020795" />
-    <state width="1874" height="312" key="GridCell.Tab.0.right" timestamp="1602927020797">
+    <state width="1874" height="311" key="GridCell.Tab.0.left/0.0.1920.1155@0.0.1920.1155" timestamp="1602939552763" />
+    <state width="1874" height="311" key="GridCell.Tab.0.right" timestamp="1602939552765">
       <screen x="0" y="0" width="1920" height="1155" />
     </state>
-    <state width="1874" height="312" key="GridCell.Tab.0.right/0.0.1920.1155@0.0.1920.1155" timestamp="1602927020797" />
+    <state width="1874" height="311" key="GridCell.Tab.0.right/0.0.1920.1155@0.0.1920.1155" timestamp="1602939552765" />
     <state x="653" y="226" key="SettingsEditor" timestamp="1602926356216">
       <screen x="0" y="0" width="1920" height="1155" />
     </state>
@@ -165,5 +169,8 @@
       <screen x="0" y="0" width="1920" height="1155" />
     </state>
     <state x="665" y="193" width="589" height="768" key="find.popup/0.0.1920.1155@0.0.1920.1155" timestamp="1602924680988" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/hw2_lucene$Main.ic" NAME="Main Coverage Results" MODIFIED="1602928637206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
