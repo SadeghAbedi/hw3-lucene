@@ -47,6 +47,8 @@ public class DocumentIndexer {
                 }
                 line = reader.readLine();
             }
+            writer.flush();
+            writer.commit();
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
