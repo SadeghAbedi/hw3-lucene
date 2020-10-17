@@ -6,6 +6,6 @@ class MainTest {
 
     @Test
     void main() {
-        Main.main(new String[]{"25-56", "12-16", "2-7"});
+        Main.main(new String[]{"515-618"});
     }
 }
