@@ -22,10 +22,24 @@ public class Main {
             IndexWriterConfig indexWriterConfig  = new IndexWriterConfig( analyzer);
             IndexWriter writer = new IndexWriter(dir , indexWriterConfig);
 
+<<<<<<< Updated upstream
             writer.close();
         } catch (IOException ex){
             System.out.println(ex.getStackTrace());
 
+=======
+        Arrays.stream(args).filter(s -> s.matches("\\d+-\\d+"))
+                .map(s -> {
+            var range = s.split("-");
+            return IntStream.range(Integer.parseInt(range[0]),Integer.parseInt(range[1]));
+        }).flatMap(IntStream::boxed).forEach(indexer::addDocumentNumber);
+        indexer.perform();
+
+        try {
+            DocumentIndexer.readIndex();
+        } catch (IOException e) {
+            e.printStackTrace();
+>>>>>>> Stashed changes
         }
     }
 }

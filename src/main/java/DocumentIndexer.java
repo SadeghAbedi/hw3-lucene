@@ -2,17 +2,15 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.*;
-import org.apache.lucene.index.IndexWriter;
-import org.apache.lucene.index.IndexWriterConfig;
-import org.apache.lucene.index.IndexableFieldType;
+import org.apache.lucene.index.*;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
+import org.apache.lucene.util.BytesRef;
 
 public class DocumentIndexer {
     IndexWriter writer;
@@ -55,15 +53,58 @@ public class DocumentIndexer {
         }
     }
 
+    public static void readIndex() throws IOException {
+
+
+        Directory dir = FSDirectory.open(Paths.get("index"));
+        DirectoryReader reader = DirectoryReader.open(dir);
+
+        System.out.println(Arrays.toString(reader.directory().listAll()));
+        System.out.println(reader.numDocs());
+
+        Terms terms = MultiTerms.getTerms(reader, "contents");
+        var it = terms.iterator();
+        BytesRef byteRef = null;
+        while ((byteRef = it.next()) != null) {
+            System.out.println("\"" + byteRef.utf8ToString() + "\"" + " : TotalFreq : " + it.totalTermFreq());
+
+            for (int i = 0; i < reader.numDocs(); i++) {
+                Terms termVector = reader.getTermVector(i, "contents");
+                TermsEnum itr = termVector.iterator();
+                BytesRef term = null;
+                while ((term = itr.next()) != null) {
+                    try {
+                        String termText = term.utf8ToString();
+                        if (termText.equals(byteRef.utf8ToString())) {
+                            System.out.print("doc" + i + "(" + itr.totalTermFreq() + "),");
+                        }
+
+
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                }
+            }
+
+            System.out.println("");
+
+
+        }
+        reader.close();
+    }
+
     private String addDocument(BufferedReader reader) {
         var doc = new Document();
-        var field = new IntPoint("docId", (Integer) documentNumbers.get(0));
-        doc.add(field);
+        FieldType type = new FieldType();
+        type.setIndexOptions(IndexOptions.DOCS_AND_FREQS);
+        type.setStored(true);
+        type.setStoreTermVectors(true);
+
         try {
             String line = reader.readLine();
             do {
                 line = reader.readLine();
-                doc.add(new TextField("contents", line, Field.Store.YES));
+                doc.add(new Field("contents", line, type));
             } while (!line.matches(".I \\d+"));
             writer.addDocument(doc);
             documentNumbers.remove(0);
