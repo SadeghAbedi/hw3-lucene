@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-22T21:25:52" hostname="DESKTOP-NQ4QDIK" time="0.424">
+<testsuite name="MainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-22T21:31:42" hostname="DESKTOP-NQ4QDIK" time="0.419">
   <properties/>
-  <testcase name="main()" classname="MainTest" time="0.424"/>
-  <system-out><![CDATA[[_8.cfe, _8.cfs, _8.si, segments_9, write.lock]
+  <testcase name="main()" classname="MainTest" time="0.419"/>
+  <system-out><![CDATA[[_9.cfe, _9.cfs, _9.si, segments_a, write.lock]
 103
 
 "0.003" : doc1(1),
