@@ -8,6 +8,7 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.en.EnglishAnalyzer;
 import org.apache.lucene.document.*;
 import org.apache.lucene.index.*;
+import org.apache.lucene.search.DocIdSetIterator;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.BytesRef;
@@ -63,6 +64,7 @@ public class DocumentIndexer {
         var doc = new Document();
         var type = new FieldType();
         type.setIndexOptions(IndexOptions.DOCS_AND_FREQS);
+        type.setStored(true);
         type.setStoreTermVectors(true);
 
         try {
@@ -89,32 +91,31 @@ public class DocumentIndexer {
         System.out.println(reader.numDocs());
 
         Terms terms = MultiTerms.getTerms(reader, "contents");
-        var it = terms.iterator();
         BytesRef byteRef;
-        while ((byteRef = it.next()) != null) {
-            System.out.println("\"" + byteRef.utf8ToString() + "\"" + " : TotalFreq : " + it.totalTermFreq());
 
-            for (int i = 0; i < reader.numDocs(); i++) {
-                Terms termVector = reader.getTermVector(i, "contents");
-                TermsEnum itr = termVector.iterator();
-                BytesRef term;
-                while ((term = itr.next()) != null) {
-                    try {
-                        String termText = term.utf8ToString();
-                        if (termText.equals(byteRef.utf8ToString())) {
-                            System.out.print("doc" + i + "(" + itr.totalTermFreq() + "),");
-                            break;
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+        if ( terms.size() > 0) {
+            // access the terms for this field
+            TermsEnum termsEnum = terms.iterator();
+            BytesRef term = null;
+
+            // explore the terms for this field
+            while ((term = termsEnum.next()) != null) {
+                // enumerate through documents, in this case only one
+                PostingsEnum docsEnum = termsEnum.postings(null);
+                int docIdEnum;
+
+                System.out.print("\n\"" + term.utf8ToString() + "\" : ");
+                while ((docIdEnum = docsEnum.nextDoc()) != DocIdSetIterator.NO_MORE_DOCS) {
+                    // get the term frequency in the document
+
+                    System.out.print("doc" + docIdEnum + "(" + docsEnum.freq() + "),");
                 }
             }
 
-            System.out.println();
-
-
         }
+
+
+
         reader.close();
     }
 
