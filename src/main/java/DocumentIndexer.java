@@ -91,7 +91,6 @@ public class DocumentIndexer {
         System.out.println(reader.numDocs());
 
         Terms terms = MultiTerms.getTerms(reader, "contents");
-        BytesRef byteRef;
 
         if ( terms.size() > 0) {
             // access the terms for this field
@@ -101,19 +100,18 @@ public class DocumentIndexer {
             // explore the terms for this field
             while ((term = termsEnum.next()) != null) {
                 // enumerate through documents, in this case only one
-                PostingsEnum docsEnum = termsEnum.postings(null);
+                PostingsEnum postingsEnum = termsEnum.postings(null);
                 int docIdEnum;
 
                 System.out.print("\n\"" + term.utf8ToString() + "\" : ");
-                while ((docIdEnum = docsEnum.nextDoc()) != DocIdSetIterator.NO_MORE_DOCS) {
+                while ((docIdEnum = postingsEnum.nextDoc()) != DocIdSetIterator.NO_MORE_DOCS) {
                     // get the term frequency in the document
 
-                    System.out.print("doc" + docIdEnum + "(" + docsEnum.freq() + "),");
+                    System.out.print("doc" + docIdEnum + "(" + postingsEnum.freq() + "),");
                 }
             }
 
         }
-
 
 
         reader.close();
