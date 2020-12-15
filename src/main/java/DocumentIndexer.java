@@ -70,7 +70,8 @@ public class DocumentIndexer {
         type.setStoreTermVectors(true);
 
         try {
-            String line = reader.readLine();
+            while (reader.readLine().equals(".W"));
+            String line;
             do {
                 line = reader.readLine();
                 doc.add(new Field("contents", line, type));
