@@ -13,7 +13,6 @@ import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.*;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
-import org.apache.lucene.util.BytesRef;
 
 public class DocumentIndexer {
     IndexWriter writer;
@@ -70,6 +69,7 @@ public class DocumentIndexer {
         type.setStoreTermVectors(true);
 
         try {
+            //noinspection StatementWithEmptyBody
             while (reader.readLine().equals(".W"));
             String line;
             do {
@@ -95,10 +95,10 @@ public class DocumentIndexer {
 
 
         EnglishAnalyzer analyzer = new EnglishAnalyzer();
-        String querystr = "what theoretical and experimental guides do we have as to turbulent\n" +
+        String query = "what theoretical and experimental guides do we have as to turbulent\n" +
                 "couette flow behaviour .";
         try {
-            Query q = new QueryParser("contents", analyzer).parse(querystr);
+            Query q = new QueryParser("contents", analyzer).parse(query);
             int hitsPerPage = 10;
             IndexReader reader = DirectoryReader.open(dir);
             IndexSearcher searcher = new IndexSearcher(reader);
@@ -114,9 +114,7 @@ public class DocumentIndexer {
                 System.out.println(docId + ". " + i + "\t" + d.get("contents"));
 
             }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
         reader.close();
