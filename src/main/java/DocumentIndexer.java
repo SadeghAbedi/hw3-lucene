@@ -41,7 +41,7 @@ public class DocumentIndexer {
     void perform() {
         Collections.sort(documentNumbers);
 
-        Path path = Paths.get("lucene_ dataset.txt");
+        Path path = Paths.get("doc.txt");
 
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             String line = reader.readLine();
@@ -95,7 +95,7 @@ public class DocumentIndexer {
 
         EnglishAnalyzer analyzer = new EnglishAnalyzer();
         String querystr = "what theoretical and experimental guides do we have as to turbulent\n" +
-                "couette flow behaviour";
+                "couette flow behaviour .";
         try {
             Query q = new QueryParser("contents", analyzer).parse(querystr);
             int hitsPerPage = 10;
@@ -105,10 +105,13 @@ public class DocumentIndexer {
             ScoreDoc[] hits = docs.scoreDocs;
 
             System.out.println("Found " + hits.length + " hits.");
+
             for(int i=0;i<hits.length;++i) {
+
                 int docId = hits[i].doc;
                 Document d = searcher.doc(docId);
-                System.out.println((i + 1) + ". " + d.get("isbn") + "\t" + d.get("contents"));
+                System.out.println(docId + ". " + i + "\t" + d.get("contents"));
+
             }
         } catch (ParseException e) {
             e.printStackTrace();
