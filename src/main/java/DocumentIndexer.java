@@ -8,6 +8,9 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.en.EnglishAnalyzer;
 import org.apache.lucene.document.*;
 import org.apache.lucene.index.*;
+import org.apache.lucene.queryparser.classic.ParseException;
+import org.apache.lucene.queryparser.classic.QueryParser;
+import org.apache.lucene.search.*;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.BytesRef;
@@ -59,44 +62,6 @@ public class DocumentIndexer {
         }
     }
 
-    public void readIndex() throws IOException {
-        Directory dir = FSDirectory.open(Paths.get("index"));
-        reader = DirectoryReader.open(dir);
-
-        System.out.println(Arrays.toString(reader.directory().listAll()));
-        System.out.println(reader.numDocs());
-
-        Terms terms = MultiTerms.getTerms(reader, "contents");
-        var it = terms.iterator();
-        BytesRef byteRef;
-        while ((byteRef = it.next()) != null) {
-            System.out.println("\"" + byteRef.utf8ToString() + "\"" + " : TotalFreq : " + it.totalTermFreq());
-
-            for (int i = 0; i < reader.numDocs(); i++) {
-                Terms termVector = reader.getTermVector(i, "contents");
-                TermsEnum itr = termVector.iterator();
-                BytesRef term;
-                while ((term = itr.next()) != null) {
-                    try {
-                        String termText = term.utf8ToString();
-                        if (termText.equals(byteRef.utf8ToString())) {
-                            System.out.print("doc" + i + "(" + itr.totalTermFreq() + "),");
-                        }
-
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            System.out.println();
-
-
-        }
-        reader.close();
-    }
-
     private String addDocument(BufferedReader reader) {
         var doc = new Document();
         var type = new FieldType();
@@ -118,5 +83,40 @@ public class DocumentIndexer {
             return null;
         }
     }
+
+
+    public void readIndex() throws IOException {
+        Directory dir = FSDirectory.open(Paths.get("index"));
+        reader = DirectoryReader.open(dir);
+
+        System.out.println(Arrays.toString(reader.directory().listAll()));
+        System.out.println(reader.numDocs());
+
+
+        EnglishAnalyzer analyzer = new EnglishAnalyzer();
+        String querystr = "what theoretical and experimental guides do we have as to turbulent\n" +
+                "couette flow behaviour";
+        try {
+            Query q = new QueryParser("contents", analyzer).parse(querystr);
+            int hitsPerPage = 10;
+            IndexReader reader = DirectoryReader.open(dir);
+            IndexSearcher searcher = new IndexSearcher(reader);
+            TopDocs docs = searcher.search(q, hitsPerPage);
+            ScoreDoc[] hits = docs.scoreDocs;
+
+            System.out.println("Found " + hits.length + " hits.");
+            for(int i=0;i<hits.length;++i) {
+                int docId = hits[i].doc;
+                Document d = searcher.doc(docId);
+                System.out.println((i + 1) + ". " + d.get("isbn") + "\t" + d.get("contents"));
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        reader.close();
+    }
+
 
 }
