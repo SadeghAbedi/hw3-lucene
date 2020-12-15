@@ -8,7 +8,9 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.en.EnglishAnalyzer;
 import org.apache.lucene.document.*;
 import org.apache.lucene.index.*;
-import org.apache.lucene.search.DocIdSetIterator;
+import org.apache.lucene.queryparser.classic.ParseException;
+import org.apache.lucene.queryparser.classic.QueryParser;
+import org.apache.lucene.search.*;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.BytesRef;
@@ -90,30 +92,29 @@ public class DocumentIndexer {
         System.out.println(Arrays.toString(reader.directory().listAll()));
         System.out.println(reader.numDocs());
 
-        Terms terms = MultiTerms.getTerms(reader, "contents");
 
-        if ( terms.size() > 0) {
-            // access the terms for this field
-            TermsEnum termsEnum = terms.iterator();
-            BytesRef term = null;
+        EnglishAnalyzer analyzer = new EnglishAnalyzer();
+        String querystr = "what theoretical and experimental guides do we have as to turbulent\n" +
+                "couette flow behaviour";
+        try {
+            Query q = new QueryParser("contents", analyzer).parse(querystr);
+            int hitsPerPage = 10;
+            IndexReader reader = DirectoryReader.open(dir);
+            IndexSearcher searcher = new IndexSearcher(reader);
+            TopDocs docs = searcher.search(q, hitsPerPage);
+            ScoreDoc[] hits = docs.scoreDocs;
 
-            // explore the terms for this field
-            while ((term = termsEnum.next()) != null) {
-                // enumerate through documents, in this case only one
-                PostingsEnum postingsEnum = termsEnum.postings(null);
-                int docIdEnum;
-
-                System.out.print("\n\"" + term.utf8ToString() + "\" : ");
-                while ((docIdEnum = postingsEnum.nextDoc()) != DocIdSetIterator.NO_MORE_DOCS) {
-                    // get the term frequency in the document
-
-                    System.out.print("doc" + docIdEnum + "(" + postingsEnum.freq() + "),");
-                }
+            System.out.println("Found " + hits.length + " hits.");
+            for(int i=0;i<hits.length;++i) {
+                int docId = hits[i].doc;
+                Document d = searcher.doc(docId);
+                System.out.println((i + 1) + ". " + d.get("isbn") + "\t" + d.get("contents"));
             }
-
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-
         reader.close();
     }
 
