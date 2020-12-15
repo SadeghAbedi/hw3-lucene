@@ -41,7 +41,7 @@ public class DocumentIndexer {
     void perform() {
         Collections.sort(documentNumbers);
 
-        Path path = Paths.get("doc.txt");
+        Path path = Paths.get("lucene_ dataset.txt");
 
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             String line = reader.readLine();
